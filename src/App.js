@@ -1,25 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from 'styled-components';
+
+import { useProgressInit } from './hooks/useProgressInit';
+import { ProgressProvider } from './context/ProgressContext';
+import { useEffect, useState } from 'react';
+
+const Wrapper = styled.div`
+  --baseBorderRadius: 20px;
+  --smallBorderRadius: 10px;
+  --mainColor: #203876;
+  --secondColor: #CAD5F2;
+
+  color: #FFFFFF;
+  background: var(--mainColor);
+  width: 100%;
+  height: ${({height}) => height};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [height, setHeight] = useState('100vh');
+    const progress = useProgressInit();
+    const { screen } = progress;
+
+    const Component = screen?.component || (() => null);
+
+    useEffect(() => {
+        function handleResize() {
+            const viewportHeight = document.documentElement.clientHeight;
+            setHeight(viewportHeight + 'px');
+        }
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+    return (
+        <ProgressProvider value={progress}>
+            <Wrapper height={height}>
+                <Component />
+            </Wrapper>
+        </ProgressProvider>
+    );
 }
 
 export default App;

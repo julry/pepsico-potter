@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'HarryPotter';
+    src: local('HarryPotter'),
+    url('./static/fonts/HarryPotter/harrypotter.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'agbengaly';
+    src: local('agbengaly'),
+    url('./static/fonts/agbengaly/agbengaly.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: local('Gotham'),
+    url('./static/fonts/Gotham/GothamBook.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: local('Gotham'),
+    url('./static/fonts/Gotham/GothamBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
