@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { answerTypes } from '../constants/answerTypes';
 
 const INITIAL_ANSWERS = {};
-const INITIAL_RESULT = answerTypes.HR;
+const INITIAL_RESULT = answerTypes.Analytics;
 const INITIAL_ANSWER_POINTS = Object.keys(answerTypes)
     .reduce((acc, key) => {
         acc[key] = 0;

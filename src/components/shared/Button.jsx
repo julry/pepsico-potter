@@ -15,15 +15,16 @@ const SIZE_TO_FONT = {
 const ButtonWrapper = styled.button`
   outline: none;
   border:none;
-  box-shadow: 0 0 ${({isPressed}) => isPressed ? '9px #AAD5FF' : '16px #BDD9FF'};
+  box-shadow: 0 0 ${({$isPressed}) => $isPressed ? '9px #AAD5FF' : '16px #BDD9FF'};
   border-radius: var(--baseBorderRadius);
-  background: ${({isPressed}) => isPressed ? 'linear-gradient(0deg, #CAD5F2, #CAD5F2), #FFFFFF' : '#FFFFFF'};
-  font-family: 'Gotham', serif;
+  background: ${({$isPressed}) => $isPressed ? 'linear-gradient(0deg, #CAD5F2, #CAD5F2), #FFFFFF' : '#FFFFFF'};
+  font-family: 'Gotham', 'Times New Roman', serif;
   font-weight: 700;
   font-size: ${({size}) => SIZE_TO_FONT[size]};
   padding: ${({size}) => SIZE_TO_PADDINGS[size]};
   cursor: pointer;
   transition: box-shadow 0.25s ease-in, background 0.25s ease-in;
+  color: var(--mainColor);
   
   &:disabled {
     color: #456293;
@@ -46,5 +47,5 @@ export const Button = ({ onClick, isChangeOnPress, ...restProps }) => {
         onClick?.();
     }
 
-    return <ButtonWrapper {...restProps } onClick={handleClick} isPressed={isPressed} />
+    return <ButtonWrapper {...restProps } onClick={handleClick} $isPressed={isPressed} />
 }

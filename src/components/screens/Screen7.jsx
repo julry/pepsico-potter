@@ -23,12 +23,13 @@ const ResultWrapper = styled.div`
   background: #FFFFFF;
   padding: min(4.5vw, 26px);
   width: 100%;
-  max-height: min(50vh, 318px);
+  max-height: min(56vh, 390px);
   overflow: auto;
   color: #000000;
   max-width: 800px;
   margin: ${({hasPositions}) => hasPositions ? 0 : 'min(31.4vw, 140px)'} 0 min(17.2vw, 82px);
   white-space: pre-line;
+  font-family: 'Gotham', 'Times New Roman', serif;
   
   @media screen and (min-width: 1000px) {
     max-height: calc(100vh - 260px);
