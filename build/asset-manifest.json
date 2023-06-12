@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "./static/css/main.55d41296.css",
-    "main.js": "./static/js/main.75505d7d.js",
+    "main.css": "./static/css/main.ff2780a8.css",
+    "main.js": "./static/js/main.99952517.js",
     "static/media/final.png": "./static/media/final.24adddcfa93c8a2a7531.png",
     "static/media/start.png": "./static/media/start.3aabca0d77c5e2b8434f.png",
     "static/media/lightning.png": "./static/media/lightning.6393c27d63a707a27fd1.png",
     "static/media/GothamBook.otf": "./static/media/GothamBook.7f34eb053257cab413dc.otf",
+    "static/media/GothamBold.otf": "./static/media/GothamBold.eaee1032db0d2ff750d2.otf",
     "static/media/castle.svg": "./static/media/castle.e5685cbdc5533f385fbd2a85d246e6b0.svg",
     "static/media/agbengaly.ttf": "./static/media/agbengaly.e057d07b8893434c4483.ttf",
-    "static/media/GothamBold.ttf": "./static/media/GothamBold.108854bb27dee2dce854.ttf",
     "static/media/stick.svg": "./static/media/stick.9a2a999691e325c29ae910e86802f2d5.svg",
     "static/media/harrypotter.ttf": "./static/media/harrypotter.0a6fdeb3007fdbf17e06.ttf",
     "static/media/hat.svg": "./static/media/hat.d328ea79fe74cd564dcf69c648554913.svg",
     "static/media/logo.svg": "./static/media/logo.febc3e8f8bed2b7fa97a44e1467bb085.svg",
     "index.html": "./index.html",
-    "main.55d41296.css.map": "./static/css/main.55d41296.css.map",
-    "main.75505d7d.js.map": "./static/js/main.75505d7d.js.map"
+    "main.ff2780a8.css.map": "./static/css/main.ff2780a8.css.map",
+    "main.99952517.js.map": "./static/js/main.99952517.js.map"
   },
   "entrypoints": [
-    "static/css/main.55d41296.css",
-    "static/js/main.75505d7d.js"
+    "static/css/main.ff2780a8.css",
+    "static/js/main.99952517.js"
   ]
 }
