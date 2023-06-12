@@ -11,9 +11,10 @@ import { FlexWrapper } from './FlexWrapper';
 const Wrapper = styled(FlexWrapper)`
   position: relative;
   z-index: 2;
-  padding: 5.5vw 3.5vw;
+  padding: 5.5vw min(3.5vw, 14px);
   font-family: 'Gotham', serif;
   font-weight: 500;
+  letter-spacing: -0.02em;
 `;
 
 const Header = styled.div`
@@ -42,23 +43,36 @@ const NumberWrapper = styled.div`
   align-items: center;
 `;
 
+const QuestionTextWrapper = styled.div`
+  width: 100%;
+  max-width: 550px;
+`;
+
 const QuestionText = styled.p`
   font-size: 15px;
-  max-width: 550px;
+  max-width: 361px;
   white-space: pre-line;
 
   @media screen and (max-height: 680px){
-    font-size: 13px;
+    font-size: 14px;
+    max-width: 337px;
   }
   
-  @media screen and (min-width: 1000px) {
+  @media screen and (max-width: 320px) {
+    font-size: 13px;
+    white-space: unset;
+  }
+  
+  @media screen and (min-width: 800px) {
     font-size: 16px;
+    white-space: unset;
+    max-width: 450px;
   }
 `;
 
 const AnswersBlock = styled.div`
   width: 100%;
-  margin: min(5.4vw, 35px);
+  margin: min(4vw, 35px) 0;
   max-width: 550px;
 `;
 
@@ -67,30 +81,30 @@ const AnswerWrapper = styled.div`
   box-shadow: 0 0 7px #73B9FF;
   border-radius: var(--baseBorderRadius);
   color: #000000;
-  font-size: 13px;
+  font-size: 15px;
   width: 100%;
-  padding: 12px;
+  padding: 12px 38px 12px 18px;
   cursor: pointer;
   transition: background 0.45s ease-in;
+  white-space: pre-line;
   
   & + & {
     margin-top: min(3.2vw, 21px);
   }
 
-  @media screen and (max-height: 680px) {
-    font-size: 12px;
-    padding: 9px;
+  @media screen and (max-width: 310px) {
+    white-space: unset;
   }
   
-  @media screen and (min-width: 1000px) {
-    font-size: 15px;
+  @media screen and (max-height: 680px) {
+    font-size: 13px;
+    padding: 9px 20px 9px 15px;
   }
-
+  
   @media screen and (max-width: 320px) {
     font-size: 11px;
-    padding: 8px;
+    padding: 8px 12px;
   }
-  
 `;
 
 const Background = styled(FlexWrapper)`
@@ -116,6 +130,10 @@ const Castle = styled.div`
   width: 100%;
   height: 48.28vw;
   background: url(${castle}) 0 0 /cover;
+`;
+
+const ButtonStyled = styled(Button)`
+    margin: 0 auto;
 `;
 
 export const QuestionWrapper = ({question}) => {
@@ -145,7 +163,9 @@ export const QuestionWrapper = ({question}) => {
                         {number}/{QUESTIONS_AMOUNT}
                     </NumberWrapper>
                 </Header>
-                <QuestionText>{text}</QuestionText>
+                <QuestionTextWrapper>
+                    <QuestionText>{text}</QuestionText>
+                </QuestionTextWrapper>
                 <AnswersBlock>
                     {answers?.map((answer) => (
                         <AnswerWrapper onClick={() => handleChooseAnswer(answer)} isChosen={chosenAnswer?.id === answer.id}>
@@ -153,7 +173,14 @@ export const QuestionWrapper = ({question}) => {
                         </AnswerWrapper>
                     ))}
                 </AnswersBlock>
-                <Button onClick={handleClick} size={'sm'} isChangeOnPress disabled={!chosenAnswer}>Далее</Button>
+                <ButtonStyled
+                    onClick={handleClick}
+                    size="sm"
+                    isChangeOnPress
+                    disabled={!chosenAnswer}
+                >
+                    Далее
+                </ButtonStyled>
             </Wrapper>
             <Background>
                 <Lightning />

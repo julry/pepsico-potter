@@ -12,6 +12,7 @@ const Wrapper = styled(FlexWrapper)`
   padding: min(4.5vw, 26px);
   background: url(${final}) no-repeat 50% 50% /cover;
   max-width: 800px;
+  white-space: pre-line;
 `;
 
 const ResultWrapper = styled.div`
@@ -27,9 +28,18 @@ const ResultWrapper = styled.div`
   color: #000000;
   max-width: 800px;
   margin: ${({hasPositions}) => hasPositions ? 0 : 'min(31.4vw, 140px)'} 0 min(17.2vw, 82px);
+  white-space: pre-line;
   
   @media screen and (min-width: 1000px) {
     max-height: calc(100vh - 260px);
+  }
+  
+  @media screen and (max-width: 330px) {
+    white-space: initial;
+  }
+
+  @media screen and (min-width: 640px) {
+    white-space: initial;
   }
 `;
 
@@ -48,10 +58,18 @@ const ResultTitle = styled.h4`
   font-size: 18px;
   color: var(--mainColor);
   text-align: center;
+  
+  @media screen and (max-width: 320px) {
+    font-size: 16px;
+  }
 `;
 
 const Position = styled.div`
-    margin-top: 8px;
+  margin-top: 8px;
+
+  @media screen and (min-width: 640px) {
+    max-width: 640px;
+  }
 `;
 
 const PositionLabel = styled.h5`
@@ -75,8 +93,9 @@ const PositionLabel = styled.h5`
 `;
 
 const PositionDescription = styled.p`
-  font-size: 12px;
+  font-size: ${({hasPositions}) => hasPositions ? '12px' : '15px'};
   letter-spacing: -0.02em;
+  width: 100%;
 `;
 
 const ButtonStyled = styled(Button)`
@@ -87,14 +106,16 @@ const ButtonStyled = styled(Button)`
 export const Screen7 = () => {
     const { progress } = useProgress();
     const { result } = progress;
+
+    const hasPositions = resultTypes[result]?.positions?.length > 1;
     return <Wrapper>
         <Title>результат</Title>
-        <ResultWrapper hasPositions={resultTypes[result]?.positions?.length > 1}>
+        <ResultWrapper hasPositions={hasPositions}>
             <ResultTitle>{resultTypes[result]?.label}{'\n'}</ResultTitle>
             {resultTypes[result]?.positions?.map(position => (
                 <Position>
                     {position.label && <PositionLabel>{position.label}</PositionLabel>}
-                    <PositionDescription>{position.description}</PositionDescription>
+                    <PositionDescription hasPositions={hasPositions}>{position.description}</PositionDescription>
                 </Position>
             ))}
         </ResultWrapper>

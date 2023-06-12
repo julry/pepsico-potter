@@ -33,27 +33,36 @@ const DescriptionWrapper = styled.div`
   position: relative;
   width: 100%;
   max-width: 329px;
-  padding: 16px;
+  padding: 18px 24px;
   white-space: pre-line;
   border-radius: var(--smallBorderRadius);
   overflow: hidden;
   background: rgba(69, 98, 147, 0.8);
   
   @media screen and (max-width: 320px) {
-    padding: 10px;
+    padding: 12px 16px;
+  }
+
+  @media screen and (max-height: 650px) {
+    max-width: 290px;
+    padding: 14px 22px;
   }
 `;
 
 const Description = styled.p`
   font-family: 'agbengaly', sans-serif;
   font-size: 16px;
-
+  letter-spacing: -0.011em;
+  line-height: 17px;
+  
   @media screen and (max-width: 320px) {
     font-size: 14px;
+    line-height: 15px;
   }
 
   @media screen and (max-height: 650px) {
     font-size: 14px;
+    line-height: 15px;
   }
 `;
 
@@ -86,10 +95,14 @@ export const Screen1 = () => {
             <Title>Привет!</Title>
             <DescriptionWrapper>
                 <Description>
-                    {'Уверены, что ты попал сюда не случайно, ведь даже настоящим волшебникам нужен совет, когда возможностей вокруг\n' +
-                        'слишком много. \n' +
-                        '\n' +
-                        'Распределительная шляпа обязательно поможет тебе выбрать идеальный карьерный трек, заглянув в твое сознание. Надевай её и готовься узнать\n' +
+                    {'Уверены, что ты попал сюда\n' +
+                        'не случайно —  мы точно знаем, что тебе подходит PepsiCo.\n' +
+                        'И мы знаем, как сложно искать подходящую стажировку\n' +
+                        'в большой компании, в этом\n' +
+                        'даже настоящим волшебникам нужна помощь. Давай обратимся\n' +
+                        'к распределительной шляпе\n' +
+                        'и узнаем твой идеальный карьерный трек?\n' +
+                        'Надевай её и готовься узнать\n' +
                         'о себе больше, ведь в тесте тебя ждут увлекательные приключения!'}
                 </Description>
             </DescriptionWrapper>
