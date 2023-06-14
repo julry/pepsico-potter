@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.ff2780a8.css",
-    "main.js": "./static/js/main.862223f2.js",
+    "main.js": "./static/js/main.13a1d6c0.js",
     "static/media/final.png": "./static/media/final.24adddcfa93c8a2a7531.png",
     "static/media/starMd.png": "./static/media/starMd.906242d44ccf8ba776e3.png",
     "static/media/start.png": "./static/media/start.3aabca0d77c5e2b8434f.png",
@@ -15,13 +15,13 @@
     "static/media/stick.svg": "./static/media/stick.9a2a999691e325c29ae910e86802f2d5.svg",
     "static/media/harrypotter.ttf": "./static/media/harrypotter.0a6fdeb3007fdbf17e06.ttf",
     "static/media/hat.svg": "./static/media/hat.d328ea79fe74cd564dcf69c648554913.svg",
-    "static/media/logo.svg": "./static/media/logo.febc3e8f8bed2b7fa97a44e1467bb085.svg",
+    "static/media/logo.svg": "./static/media/logo.1630ac7e8b1a3a9b85ef744e9349c685.svg",
     "index.html": "./index.html",
     "main.ff2780a8.css.map": "./static/css/main.ff2780a8.css.map",
-    "main.862223f2.js.map": "./static/js/main.862223f2.js.map"
+    "main.13a1d6c0.js.map": "./static/js/main.13a1d6c0.js.map"
   },
   "entrypoints": [
     "static/css/main.ff2780a8.css",
-    "static/js/main.862223f2.js"
+    "static/js/main.13a1d6c0.js"
   ]
 }
