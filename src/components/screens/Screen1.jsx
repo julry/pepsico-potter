@@ -11,7 +11,7 @@ import { FlexWrapper } from '../shared/FlexWrapper';
 import { DesktopDivider } from '../shared/DesktopDivider';
 
 const Wrapper = styled(FlexWrapper)`
-  padding: min(6.6vw, 31px);
+  padding: min(5.2vw, 30px) 0;
   background: url(${start}) no-repeat -950px -200px;
   
   @media screen and (min-width: 640px) {
@@ -123,8 +123,13 @@ export const Screen1 = () => {
                         'даже настоящим волшебникам нужна помощь. Давай обратимся\n'
                     }
                         <DesktopDivider />
-                    {   'к распределительной шляпе\n' +
-                        'и узнаем твой идеальный карьерный трек?\n' +
+                    {
+                        'к распределительной шляпе\n' +
+                        'и узнаем твой идеальный карьерный трек?\n\n'
+                    }
+                    <DesktopDivider />
+                    <DesktopDivider />
+                    {
                         'Надевай её и готовься узнать\n' +
                         'о себе больше, ведь в тесте тебя ждут увлекательные приключения!'
                     }
