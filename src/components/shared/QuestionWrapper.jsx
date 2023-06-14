@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import logo from '../../static/images/logo.svg';
 import lightning from '../../static/images/lightning.png';
+import questionBg from '../../static/images/question.png';
 import castle from '../../static/images/castle.svg';
 import { QUESTIONS_AMOUNT } from '../../constants/question.config';
 import { Button } from './Button';
@@ -15,6 +16,11 @@ const Wrapper = styled(FlexWrapper)`
   font-family: 'Gotham', serif;
   font-weight: 500;
   letter-spacing: -0.02em;
+  
+  @media screen and (min-width: 900px) {
+    background: url(${questionBg}) 0 0 no-repeat;
+    background-size: cover;
+  }
 `;
 
 const Header = styled.div`
@@ -22,7 +28,7 @@ const Header = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-bottom: min(3.5vw, 26px);
-  max-width: 550px;
+  max-width: 980px;
 `;
 
 const Logo = styled.div`
@@ -45,7 +51,7 @@ const NumberWrapper = styled.div`
 
 const QuestionTextWrapper = styled.div`
   width: 100%;
-  max-width: 550px;
+  max-width: 980px;
 `;
 
 const QuestionText = styled.p`
@@ -64,16 +70,16 @@ const QuestionText = styled.p`
   }
   
   @media screen and (min-width: 800px) {
-    font-size: 16px;
-    white-space: unset;
-    max-width: 450px;
+    font-size: 19px;
+    white-space: initial;
+    max-width: 980px;
   }
 `;
 
 const AnswersBlock = styled.div`
   width: 100%;
   margin: min(4vw, 35px) 0;
-  max-width: 550px;
+  max-width: 980px;
 `;
 
 const AnswerWrapper = styled.div`
@@ -93,7 +99,7 @@ const AnswerWrapper = styled.div`
   }
 
   @media screen and (max-width: 310px) {
-    white-space: unset;
+    white-space: initial;
   }
   
   @media screen and (max-height: 680px) {
@@ -104,6 +110,12 @@ const AnswerWrapper = styled.div`
   @media screen and (max-width: 320px) {
     font-size: 11px;
     padding: 8px 12px;
+  }
+
+  @media screen and (min-width: 800px) {
+    white-space: initial;
+    font-size: 20px;
+    padding: 12px 90px 12px 30px;
   }
 `;
 
@@ -120,7 +132,7 @@ const Lightning = styled.div`
   height: min(25vw, 117px);
   background: url(${lightning}) 0 0 /cover;
   
-  @media screen and (min-width: 640px) {
+  @media screen and (min-width: 900px) {
     display: none;
   }
 `;
@@ -130,6 +142,10 @@ const Castle = styled.div`
   width: 100%;
   height: 48.28vw;
   background: url(${castle}) 0 0 /cover;
+
+  @media screen and (min-width: 900px) {
+    display: none;
+  }
 `;
 
 const ButtonStyled = styled(Button)`
