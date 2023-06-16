@@ -82,7 +82,7 @@ const AnswersBlock = styled.div`
   max-width: 980px;
   
   @media screen and (max-height: 650px) {
-    margin: min(4.5vw, 35px) 0 min(4vw, 35px);
+    margin: min(4.4vw, 35px) 0 min(4vw, 35px);
   }
 `;
 

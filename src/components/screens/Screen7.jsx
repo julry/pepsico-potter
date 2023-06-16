@@ -153,6 +153,10 @@ const ButtonStyled = styled(Button)`
   position: relative;
   z-index: 3;
   
+  @media screen and (max-height: 730px) {
+    margin-top: min(4vw, 35px);
+  }
+  
   @media screen and (min-width: 900px) and (min-height: 900px){
     margin-top: max(-11vw, -50px);
   }
