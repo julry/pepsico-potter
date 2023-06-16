@@ -78,8 +78,12 @@ const QuestionText = styled.p`
 
 const AnswersBlock = styled.div`
   width: 100%;
-  margin: min(4vw, 35px) 0;
+  margin: min(8.4vw, 35px) 0 min(4vw, 35px);
   max-width: 980px;
+  
+  @media screen and (max-height: 650px) {
+    margin: min(4.5vw, 35px) 0 min(4vw, 35px);
+  }
 `;
 
 const AnswerWrapper = styled.div`
