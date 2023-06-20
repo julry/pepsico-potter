@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-
 import logo from '../../static/images/logo.svg';
 import hat from '../../static/images/hat.svg';
 import start from '../../static/images/start.png';
 import startMd from '../../static/images/startMd.png';
-import { Button } from '../shared/Button';
 import { useProgress } from '../../hooks/useProgress';
+import { reachMetrikaGoal } from '../../utils/reachMetrikaGoal';
+import { Button } from '../shared/Button';
 import { Title } from '../shared/Title';
 import { FlexWrapper } from '../shared/FlexWrapper';
 import { DesktopDivider } from '../shared/DesktopDivider';
@@ -13,10 +13,14 @@ import { DesktopDivider } from '../shared/DesktopDivider';
 const Wrapper = styled(FlexWrapper)`
   padding: min(5.2vw, 30px) 0;
   background: url(${start}) no-repeat -950px -200px;
-  
+
   @media screen and (min-width: 640px) {
     background: url(${startMd}) no-repeat;
     background-size: cover;
+  }
+
+  @media screen and (min-width: 900px) and (max-height: 750px) {
+    padding-bottom: 13px;
   }
 `;
 
@@ -26,6 +30,11 @@ const Logo = styled.div`
   background: url(${logo}) no-repeat 0 0;
   background-size: contain;
   margin-bottom: min(3.6vw, 17px);
+
+  @media screen and (min-width: 900px) and (max-height: 750px) {
+    max-width: 70px;
+    max-height: 65px;
+  }
 `;
 
 const DescriptionWrapper = styled.div`
@@ -37,6 +46,8 @@ const DescriptionWrapper = styled.div`
   border-radius: var(--smallBorderRadius);
   overflow: hidden;
   background: rgba(69, 98, 147, 0.8);
+  z-index: 5;
+  flex-shrink: 0;
   
   @media screen and (max-width: 320px) {
     padding: 12px 16px;
@@ -46,11 +57,19 @@ const DescriptionWrapper = styled.div`
     max-width: 290px;
     padding: 14px 22px;
   }
+
+  @media screen and (min-width: 490px) and (max-width: 800px) {
+    max-width: 80vw;
+  }
   
-  @media screen and (min-width: 900px) {
+  @media screen and (min-width: 800px) {
     white-space: initial;
     max-width: 783px;
     padding: 18px 24px;
+  }
+
+  @media screen and (min-width: 900px) and (max-height: 750px) {
+    padding: 13px 24px;
   }
 `;
 
@@ -59,7 +78,7 @@ const Description = styled.p`
   font-size: 16px;
   letter-spacing: -0.011em;
   line-height: 17px;
-  
+
   @media screen and (max-width: 320px) {
     font-size: 14px;
     line-height: 15px;
@@ -76,12 +95,17 @@ const Description = styled.p`
     letter-spacing: -0.011em;
   }
 
-  @media screen and (min-width: 900px) and (max-height: 700px){
+  @media screen and (min-width: 430px) and (max-height: 750px){
+    font-size: 14px;
+    line-height: 15px;
+  }
+  
+  @media screen and (min-width: 900px) and (max-height: 750px) {
     font-size: 20px;
     line-height: 22px;
   }
 
-  @media screen and (min-width: 900px) and (max-height: 600px){
+  @media screen and (min-width: 900px) and (max-height: 600px) {
     font-size: 17px;
     line-height: 22px;
   }
@@ -90,7 +114,7 @@ const Description = styled.p`
 const ButtonWrapper = styled.div`
   position: relative;
   margin-top: auto;
-  
+
   @media screen and (min-height: 670px) {
     margin-top: min(35vw, 175px);
   }
@@ -109,10 +133,16 @@ const HatWrapper = styled.div`
 `;
 
 export const Screen1 = () => {
-    const { next } = useProgress();
+    const {next} = useProgress();
+
+    const handleNext = () => {
+        reachMetrikaGoal('start');
+        next();
+    };
+
     return (
         <Wrapper>
-            <Logo />
+            <Logo/>
             <Title>Привет!</Title>
             <DescriptionWrapper>
                 <Description>
@@ -122,13 +152,13 @@ export const Screen1 = () => {
                         'в большой компании, в этом\n' +
                         'даже настоящим волшебникам нужна помощь. Давай обратимся\n'
                     }
-                        <DesktopDivider />
+                    <DesktopDivider/>
                     {
                         'к распределительной шляпе\n' +
                         'и узнаем твой идеальный карьерный трек?\n\n'
                     }
-                    <DesktopDivider />
-                    <DesktopDivider />
+                    <DesktopDivider/>
+                    <DesktopDivider/>
                     {
                         'Надевай её и готовься узнать\n' +
                         'о себе больше, ведь в тесте тебя ждут увлекательные приключения!'
@@ -137,8 +167,8 @@ export const Screen1 = () => {
             </DescriptionWrapper>
             <ButtonWrapper>
                 <HatWrapper/>
-                <Button size='md' onClick={next}>Надеть шляпу</Button>
+                <Button size="md" onClick={handleNext}>Надеть шляпу</Button>
             </ButtonWrapper>
         </Wrapper>
-    )
-}
+    );
+};

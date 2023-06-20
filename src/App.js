@@ -1,14 +1,12 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
 import { useProgressInit } from './hooks/useProgressInit';
 import { ProgressProvider } from './context/ProgressContext';
-import { useEffect, useState } from 'react';
 
 const Wrapper = styled.div`
   --baseBorderRadius: 20px;
   --smallBorderRadius: 10px;
   --mainColor: #203876;
-  --secondColor: #CAD5F2;
 
   color: #FFFFFF;
   background: var(--mainColor);

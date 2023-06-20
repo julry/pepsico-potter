@@ -8,6 +8,7 @@ import { Button } from './Button';
 import { useState } from 'react';
 import { useProgress } from '../../hooks/useProgress';
 import { FlexWrapper } from './FlexWrapper';
+import { reachMetrikaGoal } from '../../utils/reachMetrikaGoal';
 
 const Wrapper = styled(FlexWrapper)`
   position: relative;
@@ -87,7 +88,7 @@ const AnswersBlock = styled.div`
 `;
 
 const AnswerWrapper = styled.div`
-  background: ${({isChosen}) => isChosen ? 'linear-gradient(0deg, #CAD5F2, #CAD5F2), #FFFFFF' : '#FFFFFF'};
+  background: ${({ $isChosen }) => $isChosen ? 'linear-gradient(0deg, #CAD5F2, #CAD5F2), #FFFFFF' : '#FFFFFF'};
   box-shadow: 0 0 7px #73B9FF;
   border-radius: var(--baseBorderRadius);
   color: #000000;
@@ -169,7 +170,8 @@ export const QuestionWrapper = ({question}) => {
 
     const handleClick = () => {
         if (isClicked) return;
-        updateAnswer(id, chosenAnswer, pointsAmount);
+        reachMetrikaGoal(`q${number}`);
+        updateAnswer(id, chosenAnswer, pointsAmount, +number === QUESTIONS_AMOUNT);
         setIsClicked(true);
         setTimeout(() => next(), 300);
     };
@@ -188,7 +190,11 @@ export const QuestionWrapper = ({question}) => {
                 </QuestionTextWrapper>
                 <AnswersBlock>
                     {answers?.map((answer) => (
-                        <AnswerWrapper onClick={() => handleChooseAnswer(answer)} isChosen={chosenAnswer?.id === answer.id}>
+                        <AnswerWrapper
+                            key={answer.id}
+                            onClick={() => handleChooseAnswer(answer)}
+                            $isChosen={chosenAnswer?.id === answer.id}
+                        >
                             {answer.text}
                         </AnswerWrapper>
                     ))}

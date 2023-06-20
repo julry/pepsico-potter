@@ -1,8 +1,8 @@
 export const answerTypes = {
-    Sales: 'Sales',
-    Analytics: 'Analytics',
-    Marketing: 'Marketing',
-    Production: 'Production',
-    Logic: 'Logic',
-    HR: 'HR'
+    Sales: 'sales',
+    Analytics: 'analyst',
+    Marketing: 'marketing',
+    Production: 'prod',
+    Logic: 'log',
+    HR: 'hr'
 };

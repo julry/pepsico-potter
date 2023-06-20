@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { useState } from 'react';
+import styled from 'styled-components';
 
 const SIZE_TO_PADDINGS = {
     md: '14px 34px',
@@ -11,10 +11,9 @@ const SIZE_TO_FONT = {
     sm: '16px',
 };
 
-
 const ButtonWrapper = styled.button`
   outline: none;
-  border:none;
+  border: none;
   box-shadow: 0 0 ${({$isPressed}) => $isPressed ? '9px #AAD5FF' : '16px #BDD9FF'};
   border-radius: var(--baseBorderRadius);
   background: ${({$isPressed}) => $isPressed ? 'linear-gradient(0deg, #CAD5F2, #CAD5F2), #FFFFFF' : '#FFFFFF'};
@@ -25,19 +24,19 @@ const ButtonWrapper = styled.button`
   cursor: pointer;
   transition: box-shadow 0.25s ease-in, background 0.25s ease-in;
   color: var(--mainColor);
-  
+
   &:disabled {
     color: #456293;
     background: rgba(69, 98, 147, 0.35);
     box-shadow: 0 0 9px #AAD5FF;
   }
-  
+
   @media screen and (min-width: 1000px) {
     font-size: 22px;
   }
 `;
 
-export const Button = ({ onClick, isChangeOnPress, ...restProps }) => {
+export const Button = ({onClick, isChangeOnPress, ...restProps}) => {
     const [isPressed, setIsPressed] = useState(false);
     const handleClick = () => {
         if (isChangeOnPress) {
@@ -45,7 +44,7 @@ export const Button = ({ onClick, isChangeOnPress, ...restProps }) => {
             setTimeout(() => setIsPressed(false), 300);
         }
         onClick?.();
-    }
+    };
 
-    return <ButtonWrapper {...restProps } onClick={handleClick} $isPressed={isPressed} />
-}
+    return <ButtonWrapper {...restProps} onClick={handleClick} $isPressed={isPressed}/>;
+};

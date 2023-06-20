@@ -10,10 +10,10 @@ const TitleStyled = styled.h3`
   @media screen and (max-width: 320px) {
     font-size: 70px;
   }
-  
+
   @media screen and (min-width: 1000px) {
     font-size: 80px;
   }
 `;
 
-export const Title = (props) => <TitleStyled {...props} />
+export const Title = (props) => <TitleStyled {...props} />;

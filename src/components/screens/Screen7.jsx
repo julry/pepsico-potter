@@ -1,21 +1,21 @@
 import styled from 'styled-components';
-import { useProgress } from '../../hooks/useProgress';
-import { resultTypes } from '../../constants/resultTypes.config';
-import { Title } from '../shared/Title';
-import { FlexWrapper } from '../shared/FlexWrapper';
-import { Button } from '../shared/Button';
-import { openHref } from '../../utils/openHref';
 import stick from '../../static/images/stick.svg';
 import final from '../../static/images/final.png';
 import starMd from '../../static/images/starMd.png';
+import { useProgress } from '../../hooks/useProgress';
+import { resultTypes } from '../../constants/resultTypes.config';
+import { openHref } from '../../utils/openHref';
+import { Title } from '../shared/Title';
+import { FlexWrapper } from '../shared/FlexWrapper';
+import { Button } from '../shared/Button';
 
 const Wrapper = styled(FlexWrapper)`
   padding: min(4.5vw, 26px);
   background: url(${final}) no-repeat 50% 50% /cover;
   max-width: 800px;
   white-space: pre-line;
-  
-  @media screen and (min-width: 900px){
+
+  @media screen and (min-width: 900px) {
     background-image: url(${starMd});
     max-width: none;
   }
@@ -26,7 +26,7 @@ const ContentWrapper = styled(FlexWrapper)`
   max-height: 800px;
   flex-direction: row;
   justify-content: center;
-  
+
   @media screen and (min-width: 900px) {
     height: calc(100vh - 300px);
   }
@@ -46,12 +46,12 @@ const ResultWrapper = styled.div`
   max-width: 800px;
   white-space: pre-line;
   font-family: 'Gotham', 'Times New Roman', serif;
-  
+
   @media screen and (min-width: 900px) {
     padding: 22px 35px;
     max-height: calc(100vh - 300px);
   }
-  
+
   @media screen and (max-width: 330px) {
     white-space: initial;
   }
@@ -70,7 +70,7 @@ const Stick = styled.div`
   height: 36.88vw;
   max-height: 175px;
   background: url(${stick}) no-repeat 0 0 /contain;
-  
+
   @media screen and (min-width: 900px) {
     max-width: 300px;
     max-height: 340px;
@@ -81,7 +81,7 @@ const ResultTitle = styled.h4`
   font-size: 18px;
   color: var(--mainColor);
   text-align: center;
-  
+
   @media screen and (max-width: 320px) {
     font-size: 16px;
   }
@@ -109,7 +109,7 @@ const PositionLabel = styled.h5`
   line-height: 17px;
   letter-spacing: -0.02em;
   text-indent: 16px;
-  
+
   &::before {
     content: '';
     position: absolute;
@@ -140,52 +140,56 @@ const PositionLabel = styled.h5`
 `;
 
 const PositionDescription = styled.p`
-  font-size: ${({hasPositions}) => hasPositions ? '12px' : '15px'};
+  font-size: ${({$hasPositions}) => $hasPositions ? '12px' : '15px'};
   letter-spacing: -0.02em;
   width: 100%;
 
   @media screen and (min-width: 900px) {
-    font-size: ${({hasPositions}) => hasPositions ? '15px' : '20px'};
+    font-size: ${({$hasPositions}) => $hasPositions ? '15px' : '20px'};
   }
 `;
 
 const ButtonStyled = styled(Button)`
   position: relative;
   z-index: 3;
-  
+
   @media screen and (max-height: 730px) {
     margin-top: min(4vw, 35px);
   }
-  
-  @media screen and (min-width: 900px) and (min-height: 900px){
+
+  @media screen and (min-width: 900px) and (min-height: 900px) {
     margin-top: max(-11vw, -50px);
   }
 `;
 
 export const Screen7 = () => {
-    const { progress } = useProgress();
-    const { result } = progress;
+    const {progress} = useProgress();
+    const {result} = progress;
 
     const hasPositions = resultTypes[result]?.positions?.length > 1;
-    return <Wrapper>
-        <Title>результат</Title>
-        <ContentWrapper>
-            <ResultWrapper>
-                <ResultTitle>{resultTypes[result]?.label}{'\n'}</ResultTitle>
-                {resultTypes[result]?.positions?.map(position => (
-                    <Position>
-                        {position.label && <PositionLabel>{position.label}</PositionLabel>}
-                        <PositionDescription hasPositions={hasPositions}>{position.description}</PositionDescription>
-                    </Position>
-                ))}
-            </ResultWrapper>
-        </ContentWrapper>
-        <ButtonStyled
-            size='md'
-            onClick={() => openHref(' https://groundupcareer.ru/')}
-        >
-            Узнать больше
-        </ButtonStyled>
-        <Stick />
-    </Wrapper>
-}
+
+    return (
+        <Wrapper>
+            <Title>результат</Title>
+            <ContentWrapper>
+                <ResultWrapper>
+                    <ResultTitle>{resultTypes[result]?.label}{'\n'}</ResultTitle>
+                    {resultTypes[result]?.positions?.map(position => (
+                        <Position key={position.label}>
+                            {position.label && <PositionLabel>{position.label}</PositionLabel>}
+                            <PositionDescription
+                                $hasPositions={hasPositions}>{position.description}</PositionDescription>
+                        </Position>
+                    ))}
+                </ResultWrapper>
+            </ContentWrapper>
+            <ButtonStyled
+                size="md"
+                onClick={() => openHref(' https://groundupcareer.ru/', 'more')}
+            >
+                Узнать больше
+            </ButtonStyled>
+            <Stick/>
+        </Wrapper>
+    );
+};
